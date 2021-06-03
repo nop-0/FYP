@@ -39,11 +39,11 @@ def get_distances(boxes1, bottom_points, distance_w, distance_h):
             if i != j:
                 dist = cal_dis(bottom_points[i], bottom_points[j], distance_w, distance_h)
                 
-                if dist <= 150:
+                if dist <= 150: #might change to 1m
                     closeness = 0
                     distance_matrix.append([bottom_points[i], bottom_points[j], closeness])
                     bxs.append([boxes1[i], boxes1[j], closeness])
-                elif dist > 150 and dist <=180:
+                elif dist > 150 and dist <=180: #might change to 1m
                     closeness = 1
                     distance_matrix.append([bottom_points[i], bottom_points[j], closeness])
                     bxs.append([boxes1[i], boxes1[j], closeness])       

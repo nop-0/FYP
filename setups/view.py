@@ -2,7 +2,7 @@
 
 import cv2
 import numpy as np
-
+from scipy.spatial import distance as dist
 
 def bird_eye(frame, distance_matrix, bottom_points, scale_w, scale_h, risk_count):
    
@@ -86,8 +86,11 @@ def social_distance(frame, distance_matrix, boxes, risk_count):
                 
             x1,y1,w1,h1 = per2[:]
             frame = cv2.rectangle(frame,(x1,y1),(x1+w1,y1+h1),yellow,2)
-                
+            
+            #measured_dist = dist.cdist((int(x+w/2), int(y+h/2)), (int(x1+w1/2), int(y1+h1/2)), metric = "euclidean")
+            
             frame = cv2.line(frame, (int(x+w/2), int(y+h/2)), (int(x1+w1/2), int(y1+h1/2)),yellow, 2)
+            #frame = cv2.putText(frame, measured_dist,(int(x+w/2), int(y+h/2)), (int(x1+w1/2), int(y1+h1/2)),cv2.FONT_HERSHEY_SIMPLEX, yellow, 2) 
 
     for i in range(len(distance_matrix)):
         per1 = distance_matrix[i][0]
@@ -100,8 +103,11 @@ def social_distance(frame, distance_matrix, boxes, risk_count):
                 
             x1,y1,w1,h1 = per2[:]
             frame = cv2.rectangle(frame,(x1,y1),(x1+w1,y1+h1),red,2)
-                
+            
+            #measured_dist = dist.cdist((int(x+w/2), int(y+h/2)), (int(x1+w1/2), int(y1+h1/2)), metric = "euclidean")
+            
             frame = cv2.line(frame, (int(x+w/2), int(y+h/2)), (int(x1+w1/2), int(y1+h1/2)),red, 2)
+            #frame = cv2.putText(frame, measured_dist,(int(x+w/2), int(y+h/2)), (int(x1+w1/2), int(y1+h1/2)),cv2.FONT_HERSHEY_SIMPLEX, red, 2)
             
     pad = np.full((140,frame.shape[1],3), [110, 110, 100], dtype=np.uint8)
     cv2.putText(pad, "Bounding box shows the level of risk to the person.", (50, 30),cv2.FONT_HERSHEY_SIMPLEX, 0.7, (100, 100, 0), 2)
