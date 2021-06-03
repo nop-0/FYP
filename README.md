@@ -1,5 +1,5 @@
 # FYP
-- Social Distance Monitor 
+Social Distance Monitor 
 - Student: Nopphadon Uttraphan 
 - Supervisor: Dr Patrick Sebastian
 
