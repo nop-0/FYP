@@ -36,6 +36,7 @@ if config.USE_GPU:
 ln = net.getLayerNames()
 ln = [ln[i[0]-1] for i in net.getUnconnectedOutLayers()]
 
+#obtain video frames from test footage
 print("[INFO] accessing video stream")
 vs =cv2.VideoCapture(args["input"] if args["input"] else 0)
 writer = None
@@ -45,20 +46,27 @@ while True:
     
     if not grabbed:
         break
+    #resize video frame
     frame = imutils.resize(frame, width = 700)
+    
+    #return individual detection results
     results = detect_people(frame, net, ln, personIDx = LABELS.index("person"))
     
     violate = set()
     if len(results) > 2:
         centroids = np.array([r[2] for r in results])
+        
+        #calculate distance between individuals centroid coordinates
         D = dist.cdist(centroids, centroids, metric = "euclidean")
         
+        #Categorize individuals based on minimum distance = 1 metre
         for i in range(0, D.shape[1]):
             for j in range(i+1, D.shape[1]):
                 if D[i,j] < config.MIN_DISTANCE:
                     violate.add(i)
                     violate.add(j)
     
+    #generate bounding box
     for (i, (prob, bbox, centroid)) in enumerate(results):
         (startX, startY, endX, endY) = bbox
         (cX, cY) = centroid
@@ -69,7 +77,8 @@ while True:
 
         cv2.rectangle(frame, (startX, startY), (endX,endY), color, 2)
         cv2.circle(frame, (cX,cY), 5, color, 1)
-        
+    
+    #display results on video frame
     text = "Social Distancing Violation: {}".format(len(violate))
     cv2.putText(frame, text, (10, frame.shape[0]-5), cv2.FONT_HERSHEY_SIMPLEX, 0.85, (0,0,255), 3)
     
@@ -82,7 +91,7 @@ while True:
         
         if key == ord("q"):
             break
-    
+    #outputs result video 
     if args["output"] != "" and writer is None:
         fourcc = cv2.VideoWriter_fourcc(*"MJPG")
         writer = cv2.VideoWriter(args["output"], fourcc, 25, (frame.shape[1], frame.shape[0]), True)

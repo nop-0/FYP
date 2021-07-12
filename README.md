@@ -3,14 +3,19 @@ Social Distance Monitor
 - Student: Nopphadon Uttraphan 
 - Supervisor: Dr Patrick Sebastian
 
+
 # Codes listed
-- detection.py: testing whether individual detection works as intended
-- monitor.py: includes social distancing conditions with basic violations triggers
-- monitor_1.py: updated version of monitor.py with varying violation conditions
-- monitor_ref.py: attempt on estimating and displaying distance between individuals
-- monitor_transform.py: applies perspective transform for bird eye view
+- detection.py: Prototype (Determine individual detection working as intended)
+- monitor.py: Prototype (Social distance monitor with basic violations conditions)
+- monitor_ref.py: Social Distance Monitor with results display including live distance tracking and 
+
+- videos folder: consist of footage used to test Social Distance Monitor algorithm
+- output folder: consist of output video from Social Distance Monitor
+
 
 coding based on:
 - https://www.pyimagesearch.com/2020/06/01/opencv-social-distancing-detector/ 
 - https://blog.usejournal.com/social-distancing-ai-using-python-deep-learning-c26b20c9aa4c
 - https://dev.to/sherwyn11/social-distancing-analyzer-using-opencv-and-yolo-4h94
+
+*due to the large file size of YOLOv3 dataset, a link will provided to the dataset below*
