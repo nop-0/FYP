@@ -18,4 +18,7 @@ coding based on:
 - https://blog.usejournal.com/social-distancing-ai-using-python-deep-learning-c26b20c9aa4c
 - https://dev.to/sherwyn11/social-distancing-analyzer-using-opencv-and-yolo-4h94
 
-*due to the large file size of YOLOv3 dataset, a link will provided to the dataset below*
+*due to the large file size of YOLOv3 dataset, links will provided to the dataset below*
+- YOLOv3 weights: https://pjreddie.com/media/files/yolov3.weights
+- YOLOv3 cfg: https://github.com/pjreddie/darknet/blob/master/cfg/yolov3.cfg
+- COCO dataset: https://github.com/pjreddie/darknet/blob/master/data/coco.names
