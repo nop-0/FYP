@@ -1,5 +1,5 @@
-# python monitor.py --input videos/pedestrians.mp4
-# python monitor.py --input videos/pedestrians.mp4 --output output/pedestrians.avi
+# python monitor.py --input videos/college.mp4
+# python monitor.py --input videos/college.mp4 --output output/college.avi
 
 from setups import config
 from setups.setup import detect_people

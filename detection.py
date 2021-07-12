@@ -1,5 +1,5 @@
-# python detection.py -i videos/pedestrians.mp4
-# python detection.py -i videos/oxford.mp4 -o output/oxford.avi
+# python detection.py -i videos/college.mp4
+# python detection.py -i videos/oxford_street.mp4 -o output/oxford_street.avi
 
 #import libraries
 from setups import config
